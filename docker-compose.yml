@@ -13,9 +13,9 @@ services:
       - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf
 
   ##### versão com ssl
-    #  - ./docker/production/nginx-ssl.conf:/etc/nginx/conf.d/default.conf
-    #  - ./docker-data/certs/conf:/etc/letsencrypt
-    #  - ./docker-data/certs/www:/var/www/certbot
+      - ./docker/production/nginx-ssl.conf:/etc/nginx/conf.d/default.conf
+      - ./docker-data/certs/conf:/etc/letsencrypt
+      - ./docker-data/certs/www:/var/www/certbot
     ports:
      - "80:80"
      - "443:443"
@@ -41,6 +41,7 @@ services:
       - ./docker-data/logs:/var/www/var/logs
 
       - ./docker/production/config.d:/var/www/config/prod.d
+      - ./translations:/var/www/src/translations
     links:
       - db
       - redis
@@ -48,6 +49,10 @@ services:
     environment:
       - REDIS_CACHE=redis
       - SESSIONS_SAVE_PATH=tcp://sessions:6379
+      - APP_LCODE=es_ES
+      - MAILER_TRANSPORT=smtp://mailhog:1025
+      - MAILER_FROM=sysadmin@localhost
+
 
     depends_on:
       - db
