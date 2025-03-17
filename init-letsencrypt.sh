@@ -5,18 +5,18 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-# echo "EDITE ESTE ARQUIVO E DEFINA AS VARIÁVEIS domain, email e staging"
+echo "EDITE ESTE ARQUIVO E DEFINA AS VARIÁVEIS domain, email e staging"
 # exit; # E APAGUE ESSA LINHA
 
 # Domínio da instalação
 domain=(test.culturaenlinea.uy)
 
 # Informe um e-mail válido
-email="enrique@libre.coop"
+email="enrique@libre.coopr"
 
 # EVITA que se atinja o LIMITE DE REQUESTS ao Let's Encrypt enquanto se testa as configurações
 # defina stagin=0 quando os testes passarem e execute novamente o script
-staging=0
+staging=0 
 
 data_path="./docker-data/certbot"
 rsa_key_size=4096
@@ -39,7 +39,7 @@ fi
 echo "### Creating dummy certificate for $domain ..."
 path="/etc/letsencrypt/live/mapasculturais"
 mkdir -p "$data_path/conf/live/mapasculturais"
-docker-compose -f docker-compose.certbot.yml run --rm --entrypoint "\
+docker compose -f docker-compose.certbot.yml run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:1024 -days 1\
     -keyout '$path/privkey.pem' \
     -out '$path/fullchain.pem' \
@@ -48,11 +48,11 @@ echo
 
 
 echo "### Starting nginx ..."
-docker-compose -f docker-compose.certbot.yml up --force-recreate -d nginx
+docker compose -f docker-compose.certbot.yml up --force-recreate -d nginx
 echo
 
 echo "### Deleting dummy certificate for $domain ..."
-docker-compose -f docker-compose.certbot.yml run --rm --entrypoint "\
+docker compose -f docker-compose.certbot.yml run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/mapasculturais && \
   rm -Rf /etc/letsencrypt/archive/mapasculturais && \
   rm -Rf /etc/letsencrypt/renewal/mapasculturais.conf" certbot
@@ -75,7 +75,7 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
-docker-compose -f docker-compose.certbot.yml run --rm --entrypoint "\
+docker compose -f docker-compose.certbot.yml run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
     $email_arg \
@@ -86,4 +86,8 @@ docker-compose -f docker-compose.certbot.yml run --rm --entrypoint "\
 echo
 
 echo "### baixando seviços"
-docker-compose -f docker-compose.certbot.yml down
+docker compose -f docker-compose.certbot.yml down
+
+rm -rf docker-data/certs
+mv docker-data/certbot docker-data/certs
+mv docker-data/certs/conf/live/$domain docker-data/certs/conf/live/mapasculturais
