@@ -1,3 +1,4 @@
 [submodule "plugins/MultipleLocalAuth"]
 	path = plugins/MultipleLocalAuth
-	url = https://github.com/mapasculturais/plugin-MultipleLocalAuth
+	url = https://github.com/LibreCoopUruguay/MultipleLocalAuth
+	branch = feature/login-basev2
