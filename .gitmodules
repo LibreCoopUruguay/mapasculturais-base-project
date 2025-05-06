@@ -1,3 +1,6 @@
 [submodule "plugins/MultipleLocalAuth"]
 	path = plugins/MultipleLocalAuth
 	url = https://github.com/mapasculturais/plugin-MultipleLocalAuth.git
+[submodule "themes/themeCulturaenlinea"]
+	path = themes/themeCulturaenlinea
+	url = https://github.com/LibreCoopUruguay/themeCulturaenlinea.git
