@@ -1,4 +1,4 @@
-version: '3'
+#version: '3'
 services:
   nginx:
     image: nginx:latest
@@ -50,8 +50,10 @@ services:
       - REDIS_CACHE=redis
       - SESSIONS_SAVE_PATH=tcp://sessions:6379
       - APP_LCODE=es_ES
-      - MAILER_TRANSPORT=smtp://mailhog:1025
-      - MAILER_FROM=sysadmin@localhost
+#      - MAILER_TRANSPORT=smtp://mailhog:1025
+#      - MAILER_FROM=sysadmin@localhost
+      - AUTH_LOGIN_BY_CPF=false
+      - AUTH_REQUIRED_CPF=false
 
 
     depends_on:
@@ -81,7 +83,6 @@ services:
     volumes:
       - ./docker/db:/docker-entrypoint-initdb.d
       - ./docker-data/db-data:/var/lib/postgresql/data
-    
 
 ## Em ambiente de homologação pode ser uma boa ideia utilizar o mailhog para testar 
 ## o envio de emails e também prevenir que emails de tete sejam disparados acidentalmente 
