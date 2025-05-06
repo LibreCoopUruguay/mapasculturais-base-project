@@ -54,6 +54,7 @@ services:
 #      - MAILER_FROM=sysadmin@localhost
       - AUTH_LOGIN_BY_CPF=false
       - AUTH_REQUIRED_CPF=false
+      - BUILD_ASSETS=1
 
 
     depends_on:
