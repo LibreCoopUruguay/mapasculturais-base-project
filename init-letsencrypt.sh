@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if ! [ -x "$(command -v docker-compose)" ]; then
-  echo 'Error: docker-compose is not installed.' >&2
-  exit 1
-fi
+#if ! [ -x "$(command -v docker-compose)" ]; then
+#  echo 'Error: docker-compose is not installed.' >&2
+#  exit 1
+#fi
 
 # echo "EDITE ESTE ARQUIVO E DEFINA AS VARIÁVEIS domain, email e staging"
 # exit; #E APAGUE ESSA LINHA
