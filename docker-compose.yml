@@ -41,7 +41,7 @@ services:
       - ./docker-data/logs:/var/www/var/logs
 
       - ./docker/production/config.d:/var/www/config/prod.d
-      - ./translations:/var/www/src/translations
+      # - ./translations:/var/www/src/translations
     links:
       - db
       - redis
