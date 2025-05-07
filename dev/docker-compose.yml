@@ -31,6 +31,8 @@ services:
       - BUILD_ASSETS=1
       - MAILER_TRANSPORT=smtp://mailhog:1025
       - MAILER_FROM=sysadmin@localhost
+      - SESSIONS_SAVE_PATH=tcp://redis:6379
+      - APP_LCODE=es_ES
 
     depends_on:
       - db
