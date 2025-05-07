@@ -4,3 +4,12 @@
 [submodule "themes/themeCulturaenlinea"]
 	path = themes/themeCulturaenlinea
 	url = https://github.com/LibreCoopUruguay/themeCulturaenlinea.git
+[submodule "plugins/AdminLoginAsUser"]
+	path = plugins/AdminLoginAsUser
+	url = https://github.com/mapasculturais/plugin-AdminLoginAsUser.git
+[submodule "plugins/SpamDetector"]
+	path = plugins/SpamDetector
+	url = https://github.com/mapasculturais/plugin-SpamDetector.git
+[submodule "plugins/MapasBlame"]
+	path = plugins/MapasBlame
+	url = https://github.com/mapasculturais/plugin-MapasBlame.git

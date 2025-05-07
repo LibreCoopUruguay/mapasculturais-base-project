@@ -20,8 +20,10 @@ services:
       - ./config.d:/var/www/config/local.d
 
       # themes and plugins
-      - ../plugins/SamplePlugin:/var/www/src/plugins/SamplePlugin
+      - ../plugins/AdminLoginAsUser:/var/www/src/plugins/AdminLoginAsUser
       - ../plugins/MultipleLocalAuth:/var/www/src/plugins/MultipleLocalAuth
+      - ../plugins/MapasBlame:/var/www/src/plugins/MapasBlame
+      - ../plugins/SpamDetector:/var/www/src/plugins/SpamDetector
       - ../themes/themeCulturaenlinea:/var/www/src/themes/themeCulturaenlinea
 
     environment:
