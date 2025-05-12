@@ -169,7 +169,9 @@ return array(
                 return Utils::formatCnpjCpf($value);
             },
             'validations' => array(
-                'v::cnpj()' => \MapasCulturais\i::__('O número de CNPJ informado é inválido.')
+                //'v::cnpj()' => \MapasCulturais\i::__('O número de CNPJ informado é inválido.')
+                // No realiza ninguna validación del documento
+             	'v::alwaysValid()' => \MapasCulturais\i::__('')
              ),
             'available_for_opportunities' => true,
             'readonly' => true
@@ -203,7 +205,9 @@ return array(
                 return Utils::formatCnpjCpf($value);
             },
             'validations' => array(
-                'v::cpf()' => \MapasCulturais\i::__('O número de CPF informado é inválido.')
+                //'v::cpf()' => \MapasCulturais\i::__('O número de CPF informado é inválido.')
+                // No realiza ninguna validación del documento
+             	'v::alwaysValid()' => \MapasCulturais\i::__('')
              ),
             'available_for_opportunities' => true,
             'readonly' => true
@@ -481,7 +485,9 @@ return array(
             'label' => \MapasCulturais\i::__('Telefone Público'),
             'type' => 'string',
             'validations' => array(
-                'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
+                //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
+                // No realiza ninguna validación del documento
+             	'v::alwaysValid()' => \MapasCulturais\i::__('')
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -492,7 +498,9 @@ return array(
             'label' => \MapasCulturais\i::__('Telefone 1'),
             'type' => 'string',
             'validations' => array(
-                'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
+                //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
+                // No realiza ninguna validación del documento
+             	'v::alwaysValid()' => \MapasCulturais\i::__('')
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -504,7 +512,9 @@ return array(
             'label' => \MapasCulturais\i::__('Telefone 2'),
             'type' => 'string',
             'validations' => array(
-                'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
+                //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
+                // No realiza ninguna validación del documento
+             	'v::alwaysValid()' => \MapasCulturais\i::__('')
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
