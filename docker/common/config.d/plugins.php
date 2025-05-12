@@ -6,13 +6,13 @@ return [
         'SamplePlugin' => ['namespace' => 'SamplePlugin'],
         'AdminLoginAsUser',
         'SpamDetector',
-        'MapasBlame' => [
-            'namespace' => 'MapasBlame',
-            'config' => [
-                'request.logData.PATCH' => function ($data) {
-                    return $data;
-                },
-            ]
-        ],
+        // 'MapasBlame' => [
+        //     'namespace' => 'MapasBlame',
+        //     'config' => [
+        //         'request.logData.PATCH' => function ($data) {
+        //             return $data;
+        //         },
+        //     ]
+        // ],
     ]
 ];
