@@ -17,3 +17,7 @@ COPY src/modules/FAQ/questions/es_ES /var/www/src/modules/FAQ/questions/pt_BR
 COPY hardcode/agent-types.php /var/www/src/conf/agent-types.php
 COPY hardcode/space-types.php /var/www/src/conf/space-types.php
 COPY hardcode/subsite-types.php /var/www/src/conf/subsite-types.php
+COPY hardcode/event-types.php /var/www/src/conf/event-types.php
+COPY hardcode/projec-types.php /var/www/src/conf/project-types.php
+COPY hardcode/taxonomies.php /var/www/src/conf/taxonomies.php
+
