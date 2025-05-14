@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'maps.center'  => [
-        -14.2400732, //latitude
-        -53.1805018 // longitude
-    ],
+    'maps.center' => [
+    -32.799016, // latitude (sur)
+    -56.096351  // longitude (oeste)
+],
     
     'maps.zoom.default'     => 5,
     'maps.zoom.approximate' => 14,
