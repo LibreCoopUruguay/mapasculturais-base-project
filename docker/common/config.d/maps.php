@@ -2,8 +2,8 @@
 
 return [
     'maps.center' => [
-    -32.799016, // latitude (sur)
-    -56.096351  // longitude (oeste)
+      -32.799016, // latitude (sur)
+      -56.096351  // longitude (oeste)
 ],
     
     'maps.zoom.default'     => 5,
