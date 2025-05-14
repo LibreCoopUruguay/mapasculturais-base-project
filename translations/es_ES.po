@@ -9932,7 +9932,7 @@ msgstr "DÓNDE: "
 
 #: src/modules/Components/components/entity-card/template.php:54 src/modules/Components/components/entity-card/texts.php:7
 msgid "As inscrições encerrarão no dia"
-msgstr "Las inscripciones se cerraron el día"
+msgstr "Las inscripciones se cerrarán el día"
 
 #: src/modules/Components/components/entity-card/template.php:54 src/modules/Components/components/entity-card/template.php:62
 #: src/modules/Components/components/entity-card/template.php:69
