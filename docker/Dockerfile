@@ -21,4 +21,4 @@ COPY hardcode/event-types.php /var/www/src/conf/event-types.php
 COPY hardcode/project-types.php /var/www/src/conf/project-types.php
 COPY hardcode/taxonomies.php /var/www/src/conf/taxonomies.php
 COPY hardcode/states-and-cities.php /var/www/src/conf/states-and-cities.php
-COPY uruguay.php /var/www/src/modules/Entities/states-and-cities/brasil.php
+COPY hardcode/uruguay.php /var/www/src/modules/Entities/states-and-cities/brasil.php
