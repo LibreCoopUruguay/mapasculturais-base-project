@@ -20,3 +20,4 @@ COPY hardcode/subsite-types.php /var/www/src/conf/subsite-types.php
 COPY hardcode/event-types.php /var/www/src/conf/event-types.php
 COPY hardcode/project-types.php /var/www/src/conf/project-types.php
 COPY hardcode/taxonomies.php /var/www/src/conf/taxonomies.php
+COPY hardcode/states-and-cities.php /var/www/src/conf/states-and-cities.php
