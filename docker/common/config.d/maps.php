@@ -6,7 +6,7 @@ return [
       -56.096351  // longitude (oeste)
 ],
     
-    'maps.zoom.default'     => 5,
+    'maps.zoom.default'     => 7,
     'maps.zoom.approximate' => 14,
     'maps.zoom.precise'     => 16,
     'maps.zoom.max'         => 18,
