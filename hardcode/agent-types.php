@@ -67,7 +67,7 @@ return array(
         ),
 
         'pessoaDeficiente' => array(
-            'label' => 'Pessoa com deficiência',
+            'label' => \MapasCulturais\i::__('Pessoa com deficiência'),
             'type' => 'multiselect',
             'options' => [
                 MapasCulturais\i::__('Nenhuma'),
@@ -170,8 +170,8 @@ return array(
             },
             'validations' => array(
                 //'v::cnpj()' => \MapasCulturais\i::__('O número de CNPJ informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
              ),
             'available_for_opportunities' => true,
             'readonly' => true
@@ -206,8 +206,8 @@ return array(
             },
             'validations' => array(
                 //'v::cpf()' => \MapasCulturais\i::__('O número de CPF informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
              ),
             'available_for_opportunities' => true,
             'readonly' => true
@@ -486,8 +486,8 @@ return array(
             'type' => 'string',
             'validations' => array(
                 //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -499,8 +499,8 @@ return array(
             'type' => 'string',
             'validations' => array(
                 //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -513,8 +513,8 @@ return array(
             'type' => 'string',
             'validations' => array(
                 //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -671,7 +671,7 @@ return array(
             'validations' => array(
                 "v::oneOf(v::urlDomain('facebook.com'), v::regex('/^@?([-\w\d\.]+)$/i'))" => \MapasCulturais\i::__("O valor deve ser uma URL válida ou o nome ou id do usuário.")
             ),
-            'placeholder' => "nomedousuario ou iddousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario ou iddousuario'),
             'available_for_opportunities' => true
         ),
         'twitter' => array(
@@ -683,7 +683,7 @@ return array(
             'validations' => array(
                 "v::oneOf(v::urlDomain('x.com'), v::regex('/^@?([-\w\d\.]+)$/i'))" => \MapasCulturais\i::__("O valor deve ser uma URL ou usuário válido.")
             ),
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
             'available_for_opportunities' => true
         ),
         'instagram' => array(
@@ -700,7 +700,7 @@ return array(
             'validations' => array(
                 "v::oneOf(v::urlDomain('instagram.com'), v::regex('/^@?([-\w\d\.]+)$/i'))" => \MapasCulturais\i::__("O valor deve ser uma URL ou usuário válido.")
             ),
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
         ),
         'linkedin' => array(
             'type' => "socialMedia",
@@ -711,7 +711,7 @@ return array(
             'validations' => array(
                 "v::oneOf(v::urlDomain('linkedin.com'), v::regex('/^@?([\-\w\d\.]+)$/i'))" => \MapasCulturais\i::__("O valor deve ser uma URL ou usuário válido.")
             ),
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
             'available_for_opportunities' => true
         ),
       'vimeo' => array(
@@ -723,7 +723,7 @@ return array(
             'serialize' =>function($value){
                 return Utils::parseSocialMediaUser('vimeo.com', $value);
             },
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
             'available_for_opportunities' => true
         ),
         'spotify' => array(
@@ -735,7 +735,7 @@ return array(
             'serialize' => function($value) {
                 return Utils::parseSocialMediaUser('open.spotify.com', $value);
             },
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
             'available_for_opportunities' => true
         ),
         'youtube' => array(
@@ -747,7 +747,7 @@ return array(
             'serialize' =>function($value){
                 return Utils::parseSocialMediaUser('youtube.com', $value);
             },
-            'placeholder' => "iddocanal",
+            'placeholder' => \MapasCulturais\i::__('iddocanal'),
             'available_for_opportunities' => true
         ),
         'pinterest' => array(
@@ -759,7 +759,7 @@ return array(
             'serialize' =>function($value){
                 return Utils::parseSocialMediaUser('pinterest.com', $value);
             },
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
             'available_for_opportunities' => true
         ),
         'tiktok' => array(
@@ -771,7 +771,7 @@ return array(
             'validations' => array(
                 "v::oneOf(v::urlDomain('tiktok.com'), v::regex('/^@?([-\w\d\.]+)$/i'))" => \MapasCulturais\i::__("O valor deve ser uma URL ou usuário válido.")
             ),
-            'placeholder' => "nomedousuario",
+            'placeholder' => \MapasCulturais\i::__('nomedousuario'),
             'available_for_opportunities' => true
         ),
     ),

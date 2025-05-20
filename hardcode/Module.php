@@ -90,11 +90,11 @@ class Module extends \MapasCulturais\EvaluationMethod
     public function valueToString($value)
     {
         if(is_null($value)){
-            return i::__('');
+            return '';
         } else {
             return $value;
         }
-    }
+    }''
 
     function _getEvaluationDetails(Entities\RegistrationEvaluation $evaluation): array {
         $evaluation_configuration = $evaluation->registration->opportunity->evaluationMethodConfiguration;

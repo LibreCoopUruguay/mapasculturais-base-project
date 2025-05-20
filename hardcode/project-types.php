@@ -61,6 +61,8 @@ $items = array(
     		11 => array( 'name' => "Reunión"),
     		12 => array( 'name' => "Velada"),
     		13 => array( 'name' => "Inscripciones"),
+    		14 => array( 'name' => "Premio"),
+    		15 => array( 'name' => "Ventanilla Abierta"),
 );
 
 uasort($items, 'compareNamesProject');
@@ -208,8 +210,8 @@ return array(
             'type' => 'string',
             'validations' => array(
                 //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -220,8 +222,8 @@ return array(
             'type' => 'string',
             'validations' => array(
                 //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+               // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
@@ -233,8 +235,8 @@ return array(
             'type' => 'string',
             'validations' => array(
                 //'v::brPhone()' => \MapasCulturais\i::__('O número de telefone informado é inválido.')
-                // No realiza ninguna validación del documento
-             	'v::alwaysValid()' => \MapasCulturais\i::__('')
+                // No se valida este campo intencionalmente
+		'v::alwaysValid()' => ''
             ),
             'available_for_opportunities' => true,
             'field_type' => 'brPhone'
