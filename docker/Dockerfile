@@ -10,10 +10,7 @@ WORKDIR /var/www
 COPY docker/common/config.d /var/www/config/common.d
 COPY docker/production/config.d /var/www/config/config.d
 COPY docker/common/timezone.ini /usr/local/etc/php/conf.d/timezone.ini
-# COPY translations_tmp /var/www/src/translations
-
 COPY themes/themeCulturaenlinea/php-mod/modules/FAQ/questions/es_ES /var/www/src/modules/FAQ/questions/pt_BR
-
 COPY themes/themeCulturaenlinea/php-mod/agent-types.php /var/www/src/conf/agent-types.php
 COPY themes/themeCulturaenlinea/php-mod/space-types.php /var/www/src/conf/space-types.php
 COPY themes/themeCulturaenlinea/php-mod/subsite-types.php /var/www/src/conf/subsite-types.php
