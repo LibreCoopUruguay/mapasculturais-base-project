@@ -390,11 +390,11 @@ return array(
             'label' => \MapasCulturais\i::__('Identidade de Gênero'),
             'type' => 'select',
             'options' => array(
-                'Prefiro não declarar' => \MapasCulturais\i::__('Prefiro não declarar'),
-                'Feminina' => \MapasCulturais\i::__('Feminina'),
-                'Masculina' => \MapasCulturais\i::__('Masculina'),
-                'Não binárie' => \MapasCulturais\i::__('Não binárie'),
-                'Outro' => \MapasCulturais\i::__('Outro'),
+                'Prefiero no decirlo' => 'Prefiero no decirlo',
+                'Mujer' => 'Mujer',
+                'Mujer trans' => 'Mujer trans',
+                'Hombre' => 'Hombre',
+                'Hombre trans' => 'Hombre trans',
             ),
             'available_for_opportunities' => true,
             'field_type' => 'select'
