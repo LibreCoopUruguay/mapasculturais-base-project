@@ -41,7 +41,6 @@ services:
       - ./docker-data/logs:/var/www/var/logs
 
       - ./docker/production/config.d:/var/www/config/prod.d
-      # - ./translations:/var/www/src/translations
     links:
       - db
       - redis
@@ -50,12 +49,9 @@ services:
       - REDIS_CACHE=redis
       - SESSIONS_SAVE_PATH=tcp://sessions:6379
       - APP_LCODE=es_ES
-#      - MAILER_TRANSPORT=smtp://mailhog:1025
-#      - MAILER_FROM=sysadmin@localhost
       - AUTH_LOGIN_BY_CPF=false
       - AUTH_REQUIRED_CPF=false
       - BUILD_ASSETS=1
-
 
     depends_on:
       - db
