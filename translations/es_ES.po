@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mapas\n"
-"POT-Creation-Date: 2025-06-02 12:32-0300\n"
+"POT-Creation-Date: 2025-06-05 12:32-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: librecoop\n"
@@ -552,6 +552,7 @@ msgstr ""
 #: core/src/modules/Panel/components/panel--pending-evaluations/texts.php:6
 #: core/src/modules/Spreadsheets/SpreadsheetJob.php:401
 #: core/src/themes/BaseV1/Theme.php:251 core/src/themes/BaseV1/Theme.php:252
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:87
 msgid "Espaço"
 msgstr "Espacio"
 
@@ -684,6 +685,7 @@ msgstr "Eventos"
 #: core/src/modules/Panel/components/panel--last-edited/template.php:32
 #: core/src/modules/Panel/components/panel--pending-evaluations/texts.php:5
 #: core/src/modules/Spreadsheets/SpreadsheetJob.php:398
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:64
 msgid "Agente"
 msgstr "Agente"
 
@@ -734,6 +736,7 @@ msgstr "Agente"
 #: core/src/themes/themeCulturaenlinea/layouts/parts/main-header.php:61
 #: core/src/themes/themeCulturaenlinea/views/agent/edit-1.php:35
 #: mapasculturais-base-project/themes/themeCulturaenlinea/layouts/parts/main-header.php:61
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:54
 #: mapasculturais-base-project/themes/themeCulturaenlinea/views/agent/edit-1.php:35
 msgid "Agentes"
 msgstr "Agentes"
@@ -764,6 +767,7 @@ msgstr "Agentes"
 #: core/src/themes/BaseV2/layouts/parts/navbar.php:34
 #: core/src/themes/themeCulturaenlinea/layouts/parts/main-header.php:83
 #: mapasculturais-base-project/themes/themeCulturaenlinea/layouts/parts/main-header.php:83
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:77
 msgid "Espaços"
 msgstr "Espacios"
 
@@ -788,6 +792,7 @@ msgstr "Espacios"
 #: core/src/themes/BaseV1/views/event/edit.php:435
 #: core/src/themes/BaseV1/views/event/single.php:408
 #: core/src/themes/BaseV1/views/event/single.php:435
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:110
 msgid "Projeto"
 msgstr "Proyecto"
 
@@ -824,6 +829,7 @@ msgstr "Proyecto"
 #: core/src/themes/BaseV2/layouts/parts/navbar.php:40
 #: core/src/themes/themeCulturaenlinea/layouts/parts/main-header.php:94
 #: mapasculturais-base-project/themes/themeCulturaenlinea/layouts/parts/main-header.php:94
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:100
 msgid "Projetos"
 msgstr "Proyectos"
 
@@ -10394,7 +10400,9 @@ msgstr "Las inscripciones se cerrarán el día"
 #: core/src/modules/Entities/components/entity-data/template.php:25
 #: core/src/modules/Entities/components/entity-lock/texts.php:5
 #: core/src/modules/EventImporter/components/event-importer-files/template.php:32
+#: core/src/modules/Opportunities/components/opportunity-list/template.php:32
 #: core/src/modules/Opportunities/components/opportunity-list/template.php:35
+#: core/src/modules/Opportunities/components/opportunity-list/template.php:39
 #: core/src/modules/Opportunities/components/opportunity-phases-timeline/template.php:28
 #: core/src/modules/Opportunities/components/opportunity-phases-timeline/template.php:33
 #: core/src/modules/Opportunities/components/registration-card/template.php:51
@@ -14718,6 +14726,7 @@ msgstr "Seleccionar las evaluaciones"
 #: core/src/modules/Search/components/search-filter-agent/template.php:28
 #: core/src/modules/Support/components/opportunity-support-config/template.php:131
 #: core/src/themes/BaseV1/Theme.php:1944 core/src/themes/BaseV1/Theme.php:2392
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:31
 msgid "Todos"
 msgstr "Todos"
 
@@ -17290,7 +17299,7 @@ msgstr "Acceder con este usuario"
 
 #: core/src/modules/Home/components/home-developers/template.php:11
 msgid "Alô desenvolvedores"
-msgstr "Hola Desarrolladores!!!!!!!!"
+msgstr "Hola Desarrolladores!!!!!!!"
 
 #: core/src/modules/Home/components/home-developers/template.php:13
 msgid ""
@@ -17382,14 +17391,17 @@ msgstr ""
 "además de diversas iniciativas registradas por los usuarios de la plataforma."
 
 #: core/src/modules/Home/components/home-feature/template.php:20
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:21
 msgid "Em destaque"
 msgstr "Destacado"
 
 #: core/src/modules/Home/components/home-feature/template.php:23
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:24
 msgid "Confira os últimos destaques de cada uma das entidades"
 msgstr "Consulta las últimas novedades destacadas de cada entidad"
 
 #: core/src/modules/Home/components/home-feature/template.php:125
+#: mapasculturais-base-project/themes/themeCulturaenlinea/php-mod/modules/Home/components/home-feature/template.php:126
 msgid "Nenhuma entidade em destaque foi encontrada."
 msgstr "No se encontraron entidades destacadas."
 
