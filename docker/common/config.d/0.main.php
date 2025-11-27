@@ -4,6 +4,12 @@ return [
     'app.siteName' => 'Cultura En Linea',
     'app.siteDescription' => '',
     
+    // Configuración de idioma
+    // NOTA: app.lcode NO se configura porque la versión 7.6.22 no soporta
+    // traducción de URLs. La interfaz está 100% en español mediante traducciones.
+    // Ver: conclusion_urls.md para más detalles
+    // 'app.lcode' => 'es_ES',
+    
     // Define o tema ativo no site principal. Deve ser informado o namespace do tema e neste deve existir uma classe Theme.
     'themes.active' => 'themeCulturaenlinea',
 
