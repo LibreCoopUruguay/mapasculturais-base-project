@@ -13,5 +13,5 @@ COPY docker/common/timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 RUN rm -rf /var/www/src/modules/FAQ/questions/pt_BR && ln -s /var/www/src/themes/themeCulturaenlinea/modules/FAQ/questions/es_ES /var/www/src/modules/FAQ/questions/pt_BR
 
 
-COPY themes/themeCulturaenlinea/php-mod/taxonomies.php /var/www/src/conf/taxonomies.php
+
 
