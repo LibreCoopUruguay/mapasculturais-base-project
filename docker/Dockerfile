@@ -17,5 +17,4 @@ COPY themes/themeCulturaenlinea/php-mod/subsite-types.php /var/www/src/conf/subs
 COPY themes/themeCulturaenlinea/php-mod/event-types.php /var/www/src/conf/event-types.php
 COPY themes/themeCulturaenlinea/php-mod/project-types.php /var/www/src/conf/project-types.php
 COPY themes/themeCulturaenlinea/php-mod/taxonomies.php /var/www/src/conf/taxonomies.php
-COPY themes/themeCulturaenlinea/php-mod/states-and-cities.php /var/www/src/conf/states-and-cities.php
-COPY themes/themeCulturaenlinea/php-mod/uruguay.php /var/www/src/modules/Entities/states-and-cities/brasil.php
+
