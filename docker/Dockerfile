@@ -12,9 +12,6 @@ COPY docker/production/config.d /var/www/config/config.d
 COPY docker/common/timezone.ini /usr/local/etc/php/conf.d/timezone.ini
 RUN rm -rf /var/www/src/modules/FAQ/questions/pt_BR && ln -s /var/www/src/themes/themeCulturaenlinea/modules/FAQ/questions/es_ES /var/www/src/modules/FAQ/questions/pt_BR
 
-COPY themes/themeCulturaenlinea/php-mod/space-types.php /var/www/src/conf/space-types.php
-COPY themes/themeCulturaenlinea/php-mod/subsite-types.php /var/www/src/conf/subsite-types.php
-COPY themes/themeCulturaenlinea/php-mod/event-types.php /var/www/src/conf/event-types.php
-COPY themes/themeCulturaenlinea/php-mod/project-types.php /var/www/src/conf/project-types.php
+
 COPY themes/themeCulturaenlinea/php-mod/taxonomies.php /var/www/src/conf/taxonomies.php
 
