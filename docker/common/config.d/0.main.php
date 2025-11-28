@@ -6,7 +6,7 @@ return [
     
     // Configuración de idioma
     // NOTA: app.lcode NO se configura porque la versión 7.6.22 no soporta
-    // traducción de URLs. La interfaz está 100% en español mediante traducciones.
+    // traducción de URLs de forma estable (rompe API).
     // Ver: conclusion_urls.md para más detalles
     // 'app.lcode' => 'es_ES',
     
