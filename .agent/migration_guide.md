@@ -65,7 +65,9 @@ El núcleo de Mapas Culturais se encargará de cargar los tipos de entidad defin
 
 ## 5. Recomendaciones para Instalaciones Legacy (php-mod)
 
-Para instalaciones antiguas que aún tienen la carpeta `php-mod` en su estructura, existen riesgos importantes de compatibilidad si se mezclan con las nuevas actualizaciones.
+**Definición de "Legacy"**: Nos referimos a instalaciones que aún basan su despliegue en la carpeta `themes/themeCulturaenlinea/php-mod` y cuyo `Dockerfile` copia manualmente estos archivos para sobrescribir el núcleo o plugins ("parcheo").
+
+Para estas instalaciones antiguas, existen riesgos importantes de compatibilidad si se mezclan con las nuevas actualizaciones.
 
 ### 🛑 Lo que NO debe hacer (Riesgo de Rotura)
 *   **No actualice el Repo Base**: 
