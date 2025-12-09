@@ -7,7 +7,5 @@
 
 return [
     // Habilitar módulo LGPD para términos y condiciones
-    'module.LGPD' => [
-        'enabled' => true,
-    ],
+    'module.LGPD' => [],
 ];
