@@ -10,6 +10,14 @@ class Plugin extends \MapasCulturais\Plugin {
         $app = App::i();
         i::load_textdomain( 'multipleLocal', __DIR__ . "/../MultipleLocalAuth/translations", i::get_locale() );
         
+        // Load LGPD configuration
+        $lgpdConfig = include(__DIR__ . '/config/lgpd.php');
+        if (is_array($lgpdConfig)) {
+            foreach ($lgpdConfig as $key => $value) {
+                $app->config[$key] = $value;
+            }
+        }
+        
         // Create explicit path to component
         // $this->registerComponent('mfa-verify');
 
