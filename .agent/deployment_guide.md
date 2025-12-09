@@ -96,7 +96,7 @@
 `MandatoryMFA` está diseñado para ser un repositorio independiente. 
 
 1. **Requisito Previo**: Tener instalado `MultipleLocalAuth`.
-2. **Repositorio**: (URL de tu nuevo repositorio remoto cuando lo crees).
+2. **Repositorio**: `https://github.com/LibreCoopUruguay/plugin-MandatoryMFA.git`
 3. **Procedimiento**:
     ```bash
     # Clonar el repo en la carpeta correcta
