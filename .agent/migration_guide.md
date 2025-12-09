@@ -82,5 +82,17 @@ Para estas instalaciones antiguas, existen riesgos importantes de compatibilidad
 Si tiene un VPS en producción funcionando con el método antiguo:
 
 1.  **NO haga `git pull`** del proyecto base todavía. Manténgalo en su versión actual hasta preparar la migración.
-2.  **Prepare un entorno de Staging**: Clone la nueva versión (`develop-lt`), limpie su Dockerfile siguiendo el punto 2 de esta guía, e instale el plugin `MandatoryMFA` como se indica en el punto 1.
+### Estrategia Híbrida (Quirúrgica) - RECOMENDADA PARA PRODUCCIÓN
+Si necesita mantener el entorno legacy pero activar `MandatoryMFA` ya mismo:
+
+1.  **Edite su Dockerfile**: Busque y elimine/comente **SOLAMENTE** las líneas que copian archivos dentro de `plugins/MultipleLocalAuth`.
+    *   *Deje intactas* las copias de `themes/`, `conf/` u otros parches que su sitio necesite para funcionar.
+    *   *Objetivo*: Limpiar solo la autenticación para que no choque con el plugin.
+
+2.  **Instale MandatoryMFA**: Clone el plugin nuevo.
+3.  **Resultado**: Su sitio sigue siendo "Legacy" en estructura, pero usa el sistema de autenticación "Moderno".
+
+### Estrategia de Migración Completa (Ideal)
+Si puede preparar un entorno nuevo:
+1.  **Prepare un entorno de Staging**: Clone la nueva versión (`develop-lt`), limpie su Dockerfile siguiendo el punto 2 de esta guía, e instale el plugin `MandatoryMFA` como se indica en el punto 1.
 3.  **Abandone `php-mod`**: Considere la carpeta `php-mod` como **código depreciado**. Futuras actualizaciones del tema se harán directamente en `themes/themeCulturaenlinea`, no allí.
