@@ -8,7 +8,7 @@ class Plugin extends \MapasCulturais\Plugin {
     public function _init() {
         // Registration logic if needed
         $app = App::i();
-        i::load_textdomain( 'multipleLocal', __DIR__ . "/../MultipleLocalAuth/translations" );
+        i::load_textdomain( 'multipleLocal', __DIR__ . "/../MultipleLocalAuth/translations", i::get_locale() );
         
         // Create explicit path to component
         // $this->registerComponent('mfa-verify');
