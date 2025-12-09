@@ -21,6 +21,7 @@ services:
       # themes and plugins
       - ../plugins/AdminLoginAsUser:/var/www/src/plugins/AdminLoginAsUser
       - ../plugins/MultipleLocalAuth:/var/www/src/plugins/MultipleLocalAuth
+      - ../plugins/MandatoryMFA:/var/www/src/plugins/MandatoryMFA
       - ../plugins/MapasBlame:/var/www/src/plugins/MapasBlame
       - ../plugins/SpamDetector:/var/www/src/plugins/SpamDetector
       - ../themes/themeCulturaenlinea:/var/www/src/themes/themeCulturaenlinea
