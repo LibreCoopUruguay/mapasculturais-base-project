@@ -44,8 +44,9 @@ Este documento sirve como "Brain Dump" para inicializar a cualquier agente de IA
 - **Otros Plugins**: `AdminLoginAsUser`.
 
 ## 4. Estado Actual (Snapshot)
-- **Repositorio**: Limpio (sin commits pendientes en `master`/`develop`).
-- **Submódulos**: `plugins/MultipleLocalAuth` y `themes/themeCulturaenlinea` están sincronizados y limpios.
+- **Repositorio**: Limpio (sin commits pendientes en `master`/`develop-lt`).
+- **Plugins**: `MandatoryMFA` ahora es un plugin independiente (separado de `MultipleLocalAuth`).
+- **Tema**: `themeCulturaenlinea` usa arquitectura "Zero Overrides" (sin `php-mod`).
 - **Archivos No Rastreados (Ignorar)**: Scripts de generación de datos de prueba (`create-test-data.*`, etc.).
 
 ## 5. Reglas de Desarrollo
