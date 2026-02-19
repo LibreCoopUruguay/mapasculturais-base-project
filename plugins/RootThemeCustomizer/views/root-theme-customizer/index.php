@@ -7,7 +7,7 @@ use MapasCulturais\i;
     <div class="rtc-header">
         <div class="rtc-header__title">
             <h1><?php i::_e('Personalizar Página de Inicio') ?></h1>
-            <p class="rtc-header__subtitle"><?php i::_e('Defina los textos principales, la imagen de fondo y qué secciones de contenido estarán visibles en la portada.') ?></p>
+            <p class="rtc-header__subtitle"><?php i::_e('Defina los textos principales, la imagen de fondo, el orden y qué secciones de contenido estarán visibles en la portada.') ?></p>
         </div>
         <div class="rtc-header__actions">
             <button type="button" class="rtc-btn rtc-btn--help" onclick="document.getElementById('rtc-help-modal').showModal()">
@@ -36,8 +36,13 @@ use MapasCulturais\i;
                 </div>
 
                 <div class="rtc-help-section">
-                    <h3>👁️ Secciones Visibles</h3>
-                    <p>Decida qué módulos de contenido aparecen en la página de inicio. Puede ocultar secciones que no estén en uso (ej. si no hay "Oportunidades" abiertas).</p>
+                    <h3>👁️ Gestión de Secciones</h3>
+                    <p>Controle qué módulos aparecen en la home y cómo se ven:</p>
+                    <ul>
+                        <li><strong>Orden:</strong> Número para definir la posición (1 aparece primero).</li>
+                        <li><strong>Imagen (Opcional):</strong> URL de una imagen para usar de fondo o ilustración en esa sección específica.</li>
+                        <li><strong>Mostrar:</strong> Active o desactive la sección completamente.</li>
+                    </ul>
                 </div>
 
                 <div class="rtc-help-section rtc-help-section--tip">
@@ -81,11 +86,11 @@ use MapasCulturais\i;
                 </div>
             </div>
 
-            <!-- GRUPO 2: VISIBILIDAD -->
+            <!-- GRUPO 2: SECCIONES -->
             <div class="rtc-group">
                 <div class="rtc-group__header">
                     <span class="rtc-group__icon">👁️</span>
-                    <h3 class="rtc-group__title"><?php i::_e('Secciones Visibles') ?></h3>
+                    <h3 class="rtc-group__title"><?php i::_e('Gestión de Secciones') ?></h3>
                     <span class="rtc-group__count"><?php echo count($config['sections']); ?> secciones</span>
                 </div>
                 
@@ -93,35 +98,45 @@ use MapasCulturais\i;
                     <thead>
                         <tr>
                             <th class="rtc-th--label">Sección</th>
+                            <th class="rtc-th--order">Orden</th>
+                            <th class="rtc-th--image">Imagen (URL)</th>
                             <th class="rtc-th--toggle">Mostrar en Home</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                        $sectionLabels = [
-                            'events' => 'Eventos',
-                            'agents' => 'Agentes',
-                            'spaces' => 'Espacios',
-                            'projects' => 'Proyectos',
-                            'opportunities' => 'Oportunidades',
-                            'developers' => 'Desarrolladores'
-                        ];
-                        // Ensure all sections exist in the labels array or use key
-                        foreach($config['sections'] as $key => $val): 
-                            $label = $sectionLabels[$key] ?? ucfirst($key);
-                            $checked = $val ? 'checked' : '';
+                        foreach($config['sections'] as $key => $data): 
+                            $label = $data['label'] ?? ucfirst($key);
+                            $visible = $data['visible'] ?? false;
+                            $order = $data['order'] ?? 0;
+                            $image = $data['image'] ?? '';
+                            $checked = $visible ? 'checked' : '';
                         ?>
-                        <tr class="rtc-row <?php echo !$val ? 'rtc-row--hidden' : ''; ?>">
+                        <tr class="rtc-row <?php echo !$visible ? 'rtc-row--hidden' : ''; ?>">
+                            <!-- Label -->
                             <td class="rtc-cell--label">
                                 <span class="rtc-section-label"><?php echo $label; ?></span>
                                 <code class="rtc-section-key"><?php echo $key; ?></code>
                             </td>
+                            
+                            <!-- Order -->
+                            <td class="rtc-cell--order">
+                                <input type="number" name="config[sections][<?php echo $key; ?>][order]" value="<?php echo $order; ?>" class="rtc-input rtc-input--small" min="0">
+                            </td>
+
+                            <!-- Image -->
+                            <td class="rtc-cell--image">
+                                <input type="text" name="config[sections][<?php echo $key; ?>][image]" value="<?php echo htmlspecialchars($image); ?>" class="rtc-input rtc-input--url" placeholder="https://...">
+                            </td>
+
+                            <!-- Toggle -->
                             <td class="rtc-cell--toggle">
-                                <input type="hidden" name="config[sections][<?php echo $key; ?>]" value="0">
+                                <!-- Hidden inputs for state -->
+                                <input type="hidden" name="config[sections][<?php echo $key; ?>][visible]" value="0">
                                 <label class="rtc-toggle">
-                                    <input type="checkbox" name="config[sections][<?php echo $key; ?>]" value="1" <?php echo $checked; ?> class="rtc-toggle-input">
+                                    <input type="checkbox" name="config[sections][<?php echo $key; ?>][visible]" value="1" <?php echo $checked; ?> class="rtc-toggle-input">
                                     <span class="rtc-toggle__slider"></span>
-                                    <span class="rtc-toggle__label-text"><?php echo $val ? 'Visible' : 'Oculto'; ?></span>
+                                    <span class="rtc-toggle__label-text"><?php echo $visible ? 'Visible' : 'Oculto'; ?></span>
                                 </label>
                             </td>
                         </tr>
@@ -146,7 +161,7 @@ use MapasCulturais\i;
 
 <style>
 /* ── RTC Layout ── */
-.rtc-page { padding: 24px 32px; max-width: 900px; font-family: 'Open Sans', sans-serif; }
+.rtc-page { padding: 24px 32px; max-width: 1100px; font-family: 'Open Sans', sans-serif; }
 
 /* ── Header ── */
 .rtc-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
@@ -167,18 +182,24 @@ use MapasCulturais\i;
 .rtc-label { display: block; font-weight: 600; color: #374151; margin-bottom: 6px; font-size: 0.9rem; }
 .rtc-input { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.95rem; color: #1f2937; transition: border-color .15s; }
 .rtc-input:focus { outline: none; border-color: #4361ee; box-shadow: 0 0 0 3px rgba(67,97,238,.15); }
+.rtc-input--small { width: 70px; text-align: center; }
+.rtc-input--url { font-family: monospace; font-size: 0.85rem; }
 .rtc-hint { display: block; margin-top: 4px; color: #6b7280; font-size: 0.8rem; }
 textarea.rtc-input { resize: vertical; min-height: 80px; }
 
 /* ── Table ── */
 .rtc-table { width: 100%; border-collapse: collapse; }
 .rtc-table th { background: #f3f4f6; padding: 10px 16px; text-align: left; font-size: 0.78rem; font-weight: 600; color: #6b7280; text-transform: uppercase; }
-.rtc-th--toggle { text-align: right; width: 150px; }
+.rtc-th--order { width: 90px; text-align: center; }
+.rtc-th--image { width: 35%; }
+.rtc-th--toggle { text-align: right; width: 130px; }
 .rtc-row { border-bottom: 1px solid #f3f4f6; transition: background .15s; }
 .rtc-row:last-child { border-bottom: none; }
 .rtc-row:hover { background: #f9fafb; }
 .rtc-row--hidden .rtc-section-label { opacity: 0.5; text-decoration: line-through; }
 .rtc-cell--label { padding: 12px 16px; }
+.rtc-cell--order { padding: 12px 16px; text-align: center; }
+.rtc-cell--image { padding: 12px 16px; }
 .rtc-cell--toggle { padding: 12px 16px; text-align: right; }
 .rtc-section-label { display: block; font-weight: 500; color: #1f2937; }
 .rtc-section-key { display: inline-block; font-size: 0.75rem; color: #9ca3af; background: #f3f4f6; padding: 1px 5px; border-radius: 4px; margin-top: 2px; }
