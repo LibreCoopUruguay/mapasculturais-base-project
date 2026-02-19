@@ -3,12 +3,12 @@ services:
     build:
       context: ../
       dockerfile: docker/Dockerfile
-      
+
     command: /var/www/dev/start.sh
 
     ports:
-      - "80:80"
-    
+      - "8081:80"
+
     volumes:
       - ./docker-data/assets:/var/www/html/assets
       - ./docker-data/public-files:/var/www/html/files
@@ -24,6 +24,8 @@ services:
       - ../plugins/MandatoryMFA:/var/www/src/plugins/MandatoryMFA
       - ../plugins/MapasBlame:/var/www/src/plugins/MapasBlame
       - ../plugins/SpamDetector:/var/www/src/plugins/SpamDetector
+      - ../plugins/DynamicFieldConfig:/var/www/src/plugins/DynamicFieldConfig
+      - ../plugins/RootThemeCustomizer:/var/www/src/plugins/RootThemeCustomizer
       - ../themes/themeCulturaenlinea:/var/www/src/themes/themeCulturaenlinea
 
     environment:
@@ -41,10 +43,9 @@ services:
       - db
       - redis
       - mailhog
-  
+
     stdin_open: true
     tty: true
-
 
   redis:
     image: redis:6
@@ -62,7 +63,7 @@ services:
       - ../docker/db:/docker-entrypoint-initdb.d
       - ./docker-data/db-data:/var/lib/postgresql/data
 
-  mailhog: 
+  mailhog:
     image: mailhog/mailhog
     ports:
       - "8025:8025"

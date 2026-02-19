@@ -1,10 +1,9 @@
 <?php
 return [
     'plugins' => [
-        'MultipleLocalAuth' => [ 'namespace' => 'MultipleLocalAuth' ],
-        'MandatoryMFA' => ['namespace' => 'MandatoryMFA'],
-        'SamplePlugin' => ['namespace' => 'SamplePlugin'],
-        'AdminLoginAsUser',
-        'SpamDetector',
+        'DynamicFieldConfig' => ['namespace' => 'DynamicFieldConfig'],
+        'RootThemeCustomizer' => ['namespace' => 'RootThemeCustomizer'],
+        // Asegurar que otros plugins necesarios también estén aquí si no se cargan por defecto
+        'MultipleLocalAuth' => ['namespace' => 'MultipleLocalAuth'],
     ]
 ];
