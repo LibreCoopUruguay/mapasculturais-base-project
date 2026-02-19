@@ -110,7 +110,9 @@ use MapasCulturais\i;
                             $visible = $data['visible'] ?? false;
                             $order = $data['order'] ?? 0;
                             $image = $data['image'] ?? '';
+                            $image_hint = $data['image_hint'] ?? '';
                             $checked = $visible ? 'checked' : '';
+                            $has_image = !empty(trim($image));
                         ?>
                         <tr class="rtc-row <?php echo !$visible ? 'rtc-row--hidden' : ''; ?>">
                             <!-- Label -->
@@ -126,7 +128,35 @@ use MapasCulturais\i;
 
                             <!-- Image -->
                             <td class="rtc-cell--image">
-                                <input type="text" name="config[sections][<?php echo $key; ?>][image]" value="<?php echo htmlspecialchars($image); ?>" class="rtc-input rtc-input--url" placeholder="https://...">
+                                <div class="rtc-image-manager" id="img-mgr-<?php echo $key; ?>">
+                                    <?php if ($has_image): ?>
+                                    <div class="rtc-image-preview">
+                                        <img src="<?php echo htmlspecialchars($image); ?>" alt="Preview" class="rtc-image-thumb" style="width:60px;height:36px;object-fit:cover;border-radius:4px;border:1px solid #d1d5db;flex-shrink:0;display:block;" onerror="this.parentElement.innerHTML='<span class=rtc-image-error>⚠️ URL inválida</span>'">
+                                        <div class="rtc-image-url-display" title="<?php echo htmlspecialchars($image); ?>">
+                                            <?php echo htmlspecialchars(strlen($image) > 40 ? '...' . substr($image, -37) : $image); ?>
+                                        </div>
+                                    </div>
+                                    <?php else: ?>
+                                    <div class="rtc-image-empty">
+                                        <span class="rtc-image-empty__icon">🖼️</span>
+                                        <span class="rtc-image-empty__text">Sin imagen</span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <div class="rtc-image-actions">
+                                        <button type="button" class="rtc-btn rtc-btn--sm rtc-btn--change" onclick="rtcToggleImageInput('<?php echo $key; ?>')">
+                                            <?php echo $has_image ? '✏️ Cambiar' : '➕ Agregar'; ?>
+                                        </button>
+                                        <?php if ($has_image): ?>
+                                        <button type="button" class="rtc-btn rtc-btn--sm rtc-btn--remove" onclick="rtcRemoveImage('<?php echo $key; ?>')">
+                                            🗑️
+                                        </button>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="rtc-image-input-wrap" id="img-input-<?php echo $key; ?>" style="display:none;">
+                                        <input type="text" name="config[sections][<?php echo $key; ?>][image]" value="<?php echo htmlspecialchars($image); ?>" class="rtc-input rtc-input--url" placeholder="https://mi-servidor.com/imagen.jpg" id="img-url-<?php echo $key; ?>">
+                                        <small class="rtc-hint">📐 Tamaño ideal: <?php echo $image_hint; ?></small>
+                                    </div>
+                                </div>
                             </td>
 
                             <!-- Toggle -->
@@ -241,9 +271,58 @@ textarea.rtc-input { resize: vertical; min-height: 80px; }
 /* ── Footer ── */
 .rtc-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
 .rtc-footer__info { color: #6b7280; font-size: 0.9rem; }
+
+/* ── Image Manager ── */
+.rtc-image-manager { display: flex; flex-direction: column; gap: 6px; }
+.rtc-image-preview { display: flex; align-items: center; gap: 10px; padding: 6px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; }
+.rtc-image-thumb { width: 60px; height: 36px; object-fit: cover; border-radius: 4px; border: 1px solid #d1d5db; flex-shrink: 0; }
+.rtc-image-url-display { font-family: monospace; font-size: 0.75rem; color: #6b7280; word-break: break-all; line-height: 1.3; }
+.rtc-image-error { font-size: 0.8rem; color: #dc2626; }
+.rtc-image-empty { display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: #f9fafb; border: 1px dashed #d1d5db; border-radius: 8px; }
+.rtc-image-empty__icon { font-size: 1.1rem; opacity: 0.5; }
+.rtc-image-empty__text { font-size: 0.82rem; color: #9ca3af; }
+.rtc-image-actions { display: flex; gap: 4px; }
+.rtc-btn--sm { padding: 3px 10px; font-size: 0.78rem; border-radius: 6px; }
+.rtc-btn--change { background: #eff6ff; color: #2563eb; border: 1px solid #dbeafe; }
+.rtc-btn--change:hover { background: #dbeafe; }
+.rtc-btn--remove { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 3px 7px; }
+.rtc-btn--remove:hover { background: #fecaca; }
+.rtc-image-input-wrap { margin-top: 4px; }
+.rtc-image-input-wrap .rtc-hint { display: block; margin-top: 3px; color: #6b7280; font-size: 0.78rem; }
 </style>
 
 <script>
+// --- Image Manager functions ---
+function rtcToggleImageInput(key) {
+    var wrap = document.getElementById('img-input-' + key);
+    if (wrap.style.display === 'none') {
+        wrap.style.display = 'block';
+        var input = document.getElementById('img-url-' + key);
+        if (input) input.focus();
+    } else {
+        wrap.style.display = 'none';
+    }
+}
+
+function rtcRemoveImage(key) {
+    var input = document.getElementById('img-url-' + key);
+    if (input) input.value = '';
+    // Ocultar preview y mostrar estado vacío
+    var mgr = document.getElementById('img-mgr-' + key);
+    var preview = mgr.querySelector('.rtc-image-preview');
+    if (preview) {
+        preview.outerHTML = '<div class="rtc-image-empty"><span class="rtc-image-empty__icon">🖼️</span><span class="rtc-image-empty__text">Sin imagen (se guardará al enviar)</span></div>';
+    }
+    // Ocultar botón eliminar, cambiar texto del botón agregar
+    var removeBtn = mgr.querySelector('.rtc-btn--remove');
+    if (removeBtn) removeBtn.style.display = 'none';
+    var changeBtn = mgr.querySelector('.rtc-btn--change');
+    if (changeBtn) changeBtn.innerHTML = '➕ Agregar';
+    // Mostrar input
+    var wrap = document.getElementById('img-input-' + key);
+    if (wrap) wrap.style.display = 'block';
+}
+
 // Toggle label update
 document.querySelectorAll('.rtc-toggle-input').forEach(function(input) {
     input.addEventListener('change', function() {

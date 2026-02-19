@@ -25,14 +25,14 @@ class Admin extends Controller {
 
         // Definición de todas las secciones soportadas con sus valores por defecto
         $sectionsDef = [
-            'events' => ['label' => 'Eventos', 'selector' => '#home-events', 'default' => true],
-            'agents' => ['label' => 'Agentes', 'selector' => '#home-agents', 'default' => true],
-            'spaces' => ['label' => 'Espacios', 'selector' => '#home-spaces', 'default' => true],
-            'projects' => ['label' => 'Proyectos', 'selector' => '#home-projects', 'default' => true],
-            'opportunities' => ['label' => 'Oportunidades', 'selector' => '#home-opportunities', 'default' => true],
-            'developers' => ['label' => 'Desarrolladores', 'selector' => '.home-developers', 'default' => true],
-            'featured' => ['label' => 'Destacado', 'selector' => '.home-feature', 'default' => true],
-            'register' => ['label' => 'Regístrate y Colabora', 'selector' => '.home-register', 'default' => true],
+            'events' => ['label' => 'Eventos', 'selector' => '#home-events', 'default' => true, 'image_hint' => '800×400px (card)'],
+            'agents' => ['label' => 'Agentes', 'selector' => '#home-agents', 'default' => true, 'image_hint' => '800×400px (card)'],
+            'spaces' => ['label' => 'Espacios', 'selector' => '#home-spaces', 'default' => true, 'image_hint' => '800×400px (card)'],
+            'projects' => ['label' => 'Proyectos', 'selector' => '#home-projects', 'default' => true, 'image_hint' => '800×400px (card)'],
+            'opportunities' => ['label' => 'Oportunidades', 'selector' => '#home-opportunities', 'default' => true, 'image_hint' => '800×400px (card)'],
+            'developers' => ['label' => 'Desarrolladores', 'selector' => '.home-developers', 'default' => true, 'image_hint' => '1920×400px (fondo)'],
+            'featured' => ['label' => 'Destacado', 'selector' => '.home-feature', 'default' => true, 'image_hint' => '1920×400px (fondo)'],
+            'register' => ['label' => 'Regístrate y Colabora', 'selector' => '.home-register', 'default' => true, 'image_hint' => '1920×400px (fondo)'],
         ];
 
         // Construir secciones por defecto con estructura avanzada
@@ -43,9 +43,9 @@ class Admin extends Controller {
                 'visible' => $def['default'],
                 'order' => $i++,
                 'image' => '',
-                // Metadatos internos para la vista/js (no se guardan en json idealmente, pero útiles aquí)
                 'label' => $def['label'],
-                'selector' => $def['selector']
+                'selector' => $def['selector'],
+                'image_hint' => $def['image_hint'] ?? '',
             ];
         }
 
