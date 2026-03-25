@@ -18,16 +18,28 @@ class Sso extends Controller {
     public function GET_login() {
         $app = App::i();
         
+        $requestRedirectTo = $app->request->get('redirect_to') ?: '';
+        $requestState = $app->request->get('state') ?: '';
+        
+        if (!empty($requestRedirectTo)) {
+            $_SESSION['wp_sso_redirect_to'] = $requestRedirectTo;
+            $_SESSION['wp_sso_state'] = $requestState;
+        }
+
         // 1. Force the user to be authenticated in Mapas Culturais
         $this->requireAuthentication();
         
         $user = $app->user;
-        $redirectTo = $app->request->get('redirect_to') ?: '';
-        $state = $app->request->get('state') ?: '';
+        $redirectTo = $requestRedirectTo ?: ($_SESSION['wp_sso_redirect_to'] ?? '');
+        $state = $requestState ?: ($_SESSION['wp_sso_state'] ?? '');
         
         if (empty($redirectTo)) {
             $app->halt(400, "Missing redirect_to parameter");
         }
+        
+        // Limpiamos la sesión una vez rescatados los valores
+        unset($_SESSION['wp_sso_redirect_to']);
+        unset($_SESSION['wp_sso_state']);
         
         // 2. Generate short-lived secure token (Valid for 60 seconds)
         $token = bin2hex(random_bytes(32));

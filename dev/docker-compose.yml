@@ -26,6 +26,7 @@ services:
       - ../plugins/SpamDetector:/var/www/src/plugins/SpamDetector
       - ../plugins/DynamicFieldConfig:/var/www/src/plugins/DynamicFieldConfig
       - ../plugins/RootThemeCustomizer:/var/www/src/plugins/RootThemeCustomizer
+      - ../plugins/WpForumSso:/var/www/src/plugins/WpForumSso
       - ../themes/themeCulturaenlinea:/var/www/src/themes/themeCulturaenlinea
 
     environment:
@@ -38,6 +39,7 @@ services:
       - MAILER_FROM=sysadmin@localhost
       - SESSIONS_SAVE_PATH=tcp://redis:6379
       - APP_LCODE=es_ES
+      - WP_SSO_SECRET=fallback_dev_secret_12345
 
     depends_on:
       - db

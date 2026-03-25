@@ -8,3 +8,6 @@ dev/docker-compose.override.yml
 actualizar_traduccion.sh
 theme-*.sh
 .agent/
+personalizaciones/
+
+wp-test-env/
