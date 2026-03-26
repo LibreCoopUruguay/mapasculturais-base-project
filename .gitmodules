@@ -13,3 +13,6 @@
 [submodule "plugins/MapasBlame"]
 	path = plugins/MapasBlame
 	url = https://github.com/mapasculturais/plugin-MapasBlame.git
+[submodule "plugins/WpForumSso"]
+	path = plugins/WpForumSso
+	url = https://github.com/kterva/plugin-WpForumSso.git
