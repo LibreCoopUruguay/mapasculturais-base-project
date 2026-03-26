@@ -11,3 +11,4 @@ theme-*.sh
 personalizaciones/
 
 wp-test-env/
+.agent/
