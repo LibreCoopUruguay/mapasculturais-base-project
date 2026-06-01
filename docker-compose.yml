@@ -10,15 +10,14 @@ services:
       - ./docker-data/awstats:/usr/share/nginx/html/awstats:ro
 
   ##### versão sem ssl
-      #- ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf
 
   ##### versão com ssl
-      - ./docker/production/nginx-ssl.conf:/etc/nginx/conf.d/default.conf
-      - ./docker-data/certs/conf:/etc/letsencrypt
-      - ./docker-data/certs/www:/var/www/certbot
+      #- ./docker/production/nginx-ssl.conf:/etc/nginx/conf.d/default.conf
+      #- ./docker-data/certs/conf:/etc/letsencrypt
+      #- ./docker-data/certs/www:/var/www/certbot
     ports:
-     - "80:80"
-     - "443:443"
+     - "127.0.0.1:8000:80"
     depends_on:
       - mapasculturais
     links:
@@ -49,8 +48,8 @@ services:
       - REDIS_CACHE=redis
       - SESSIONS_SAVE_PATH=tcp://sessions:6379
       - APP_LCODE=es_ES
-      - AUTH_LOGIN_BY_CPF=false
-      - AUTH_REQUIRED_CPF=false
+      - AUTH_LOGIN_BY_CPF=true
+      - AUTH_REQUIRED_CPF=true
       - BUILD_ASSETS=1
 
     depends_on:

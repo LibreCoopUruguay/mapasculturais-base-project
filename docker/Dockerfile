@@ -1,5 +1,9 @@
 FROM hacklab/mapasculturais:7.6.22
 
+# Instalar y generar el locale de español para que funcionen las traducciones Gettext
+# (Ignoramos fallos en apt-get update provocados por firmas obsoletas de repositorios externos)
+RUN (apt-get update || true) && apt-get install -y locales && locale-gen es_ES.UTF-8
+
 COPY themes /var/www/src/themes
 COPY plugins /var/www/src/plugins
 
