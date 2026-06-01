@@ -1,4 +1,15 @@
 <?php
+// Autoloader for MandatoryMFA
+spl_autoload_register(function ($class) {
+    $prefix = 'MandatoryMFA\\';
+    $base_dir = '/var/www/src/plugins/MandatoryMFA/';
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) return;
+    $relative_class = substr($class, $len);
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    if (file_exists($file)) require $file;
+});
+
 // creating base url
 $prot_part = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] ? 'https://' : 'http://';
 //added @ for HTTP_HOST undefined in Tests
@@ -7,7 +18,7 @@ if(substr($host_part,-1) !== '/') $host_part .= '/';
 $_APP_BASE_URL = $prot_part . $host_part;
 
 return [
-    'auth.provider' => '\MultipleLocalAuth\Provider',
+    'auth.provider' => 'MandatoryMFA\Provider',
     'auth.config' => array(
         'salt' => env('AUTH_SALT', null),
         'timeout' => '24 hours',
