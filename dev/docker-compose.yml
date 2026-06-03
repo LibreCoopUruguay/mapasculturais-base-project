@@ -24,7 +24,7 @@ services:
       - ../plugins/MandatoryMFA:/var/www/src/plugins/MandatoryMFA
       - ../plugins/MapasBlame:/var/www/src/plugins/MapasBlame
       - ../plugins/SpamDetector:/var/www/src/plugins/SpamDetector
-      - ../plugins/DynamicFieldConfig:/var/www/src/plugins/DynamicFieldConfig
+
       - ../plugins/RootThemeCustomizer:/var/www/src/plugins/RootThemeCustomizer
       - ../plugins/WpForumSso:/var/www/src/plugins/WpForumSso
       - ../plugins/OpportunityPreloader:/var/www/src/plugins/OpportunityPreloader

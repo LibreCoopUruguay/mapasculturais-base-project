@@ -1,7 +1,7 @@
 <?php
 return [
     'plugins' => [
-        'DynamicFieldConfig' => ['namespace' => 'DynamicFieldConfig'],
+        // Plugin removed
         'RootThemeCustomizer' => ['namespace' => 'RootThemeCustomizer'],
         'MandatoryMFA' => ['namespace' => 'MandatoryMFA'],
         // Asegurar que otros plugins necesarios también estén aquí si no se cargan por defecto
