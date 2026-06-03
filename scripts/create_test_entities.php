@@ -1,9 +1,7 @@
 <?php
-// Usar el bootstrap público que inicializa TODA la configuración y el EM ($app->init($config))
 require_once '/var/www/public/bootstrap.php';
 
 global $app;
-
 if (!isset($app)) {
     $app = \MapasCulturais\App::i();
 }
@@ -27,14 +25,6 @@ $agent->user = $user;
 $agent->status = 1;
 $agent->save(true);
 
-$space = new \MapasCulturais\Entities\Space;
-$space->name = 'Espacio de Prueba';
-$space->shortDescription = 'Espacio para probar busquedas.';
-$space->type = 10;
-$space->owner = $agent;
-$space->status = 1;
-$space->save(true);
-
 $project = new \MapasCulturais\Entities\Project;
 $project->name = 'Proyecto de Prueba';
 $project->shortDescription = 'Proyecto padre para oportunidades.';
@@ -43,24 +33,31 @@ $project->owner = $agent;
 $project->status = 1;
 $project->save(true);
 
-$opportunity = new \MapasCulturais\Entities\Opportunity;
-$opportunity->name = 'Oportunidad de Busqueda';
-$opportunity->shortDescription = 'Oportunidad de prueba.';
-$opportunity->type = 1;
-$opportunity->owner = $agent;
-$opportunity->project = $project;
-$opportunity->status = 1;
-$opportunity->publishedRegistration = true;
-$opportunity->registrationFrom = new \DateTime();
-$opportunity->registrationTo = (new \DateTime())->add(new \DateInterval('P30D'));
-$opportunity->save(true);
+echo "=====================================\n";
+echo "Creando 3 Oportunidades de Prueba...\n";
+
+$opportunities = [];
+for ($i = 1; $i <= 3; $i++) {
+    // Usamos ProjectOpportunity porque pertenecen a un Proyecto
+    $opp = new \MapasCulturais\Entities\ProjectOpportunity;
+    $opp->name = "Oportunidad de Búsqueda #$i";
+    $opp->shortDescription = "Llamado de prueba número $i para comprobar el buscador.";
+    $opp->type = 1;
+    $opp->owner = $agent;
+    $opp->project = $project;
+    $opp->status = 1;
+    $opp->publishedRegistration = true;
+    $opp->registrationFrom = new \DateTime();
+    $opp->registrationTo = (new \DateTime())->add(new \DateInterval('P30D'));
+    $opp->save(true);
+    $opportunities[] = $opp;
+    echo "✓ Oportunidad #$i creada (ID: {$opp->id})\n";
+}
 
 $app->em->flush();
 
-echo "\n=====================================\n";
-echo "¡ENTIDADES CREADAS EXITOSAMENTE!\n";
-echo "Agente ID: {$agent->id}\n";
-echo "Espacio ID: {$space->id}\n";
-echo "Proyecto ID: {$project->id}\n";
-echo "Oportunidad ID: {$opportunity->id}\n";
+echo "=====================================\n";
+echo "¡TODAS LAS ENTIDADES CREADAS EXITOSAMENTE!\n";
+echo "Agente Padre ID: {$agent->id}\n";
+echo "Proyecto Padre ID: {$project->id}\n";
 echo "=====================================\n\n";
