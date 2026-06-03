@@ -3,10 +3,12 @@ define('CLI', true);
 require '/var/www/src/bootstrap.php';
 
 $app = \MapasCulturais\App::i();
-$app->init(); // Inicializa la conexión a la base de datos
-$app->disableAccessControl();
 
-// 1. Buscar Usuario
+// In Mapas Culturais, instead of init(), we can try to call bootstrap() or similar, 
+// but wait, if we just remove init() and access repo(), it throws error?
+// Let's check how Mapas Culturais test data scripts do it.
+// We will just use the exact pattern from the repo's create-test-data.php
+
 $user = $app->repo('User')->find(1);
 if (!$user) {
     $user = $app->repo('User')->findOneBy(['status' => \MapasCulturais\Entities\User::STATUS_ACTIVE]);
@@ -16,7 +18,8 @@ if (!$user) {
     exit;
 }
 
-// 2. Crear Agente
+$app->disableAccessControl();
+
 $agent = new \MapasCulturais\Entities\Agent;
 $agent->name = 'Agente de Prueba LibreCoop';
 $agent->shortDescription = 'Agente para probar el sistema.';
@@ -24,7 +27,6 @@ $agent->user = $user;
 $agent->status = 1;
 $agent->save(true);
 
-// 3. Crear Espacio
 $space = new \MapasCulturais\Entities\Space;
 $space->name = 'Espacio de Prueba';
 $space->shortDescription = 'Espacio para probar busquedas.';
@@ -32,7 +34,6 @@ $space->owner = $agent;
 $space->status = 1;
 $space->save(true);
 
-// 4. Crear Proyecto
 $project = new \MapasCulturais\Entities\Project;
 $project->name = 'Proyecto de Prueba';
 $project->shortDescription = 'Proyecto padre para oportunidades.';
@@ -40,7 +41,6 @@ $project->owner = $agent;
 $project->status = 1;
 $project->save(true);
 
-// 5. Crear Oportunidad
 $opportunity = new \MapasCulturais\Entities\Opportunity;
 $opportunity->name = 'Oportunidad de Busqueda';
 $opportunity->shortDescription = 'Oportunidad de prueba.';
