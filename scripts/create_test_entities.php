@@ -1,8 +1,12 @@
 <?php
-// DO NOT define CLI here, let bootstrap handle it
-require '/var/www/src/bootstrap.php';
+// Usar el bootstrap público que inicializa TODA la configuración y el EM ($app->init($config))
+require_once '/var/www/public/bootstrap.php';
 
-$app = \MapasCulturais\App::i();
+global $app;
+
+if (!isset($app)) {
+    $app = \MapasCulturais\App::i();
+}
 
 $user = $app->repo('User')->find(1);
 if (!$user) {
@@ -50,7 +54,7 @@ $opportunity->save(true);
 $app->em->flush();
 
 echo "\n=====================================\n";
-echo "¡ENTIDADES CREADAS!\n";
+echo "¡ENTIDADES CREADAS EXITOSAMENTE!\n";
 echo "Agente ID: {$agent->id}\n";
 echo "Espacio ID: {$space->id}\n";
 echo "Proyecto ID: {$project->id}\n";
