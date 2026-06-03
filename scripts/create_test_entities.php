@@ -13,7 +13,7 @@ if (!$user) {
 
 $app->disableAccessControl();
 
-$agent = clone $app->repo('Agent')->findOneBy([]);
+$agent = $app->repo('Agent')->findOneBy([]);
 if (!$agent) {
     $agent = new \MapasCulturais\Entities\Agent;
     $agent->name = 'Agente Base';
@@ -43,8 +43,6 @@ for ($i = 1; $i <= 3; $i++) {
     $opp->owner = $agent;
     $opp->project = $project;
     $opp->parent = $project;
-    // Hack just in case Doctrine is complaining about direct properties
-    $opp->object_id = $project->id;
     
     $opp->status = 1;
     $opp->publishedRegistration = true;
