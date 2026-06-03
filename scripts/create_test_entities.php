@@ -41,8 +41,9 @@ for ($i = 1; $i <= 3; $i++) {
     $opp->shortDescription = "Llamado de prueba número $i para comprobar el buscador.";
     $opp->type = 1;
     $opp->owner = $agent;
+    
+    // LA MAGIA CORRECTA ES SOLO ASIGNAR EL PROYECTO
     $opp->project = $project;
-    $opp->parent = $project;
     
     $opp->status = 1;
     $opp->publishedRegistration = true;
