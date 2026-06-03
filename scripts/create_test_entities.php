@@ -1,13 +1,8 @@
 <?php
-define('CLI', true);
+// DO NOT define CLI here, let bootstrap handle it
 require '/var/www/src/bootstrap.php';
 
 $app = \MapasCulturais\App::i();
-
-// In Mapas Culturais, instead of init(), we can try to call bootstrap() or similar, 
-// but wait, if we just remove init() and access repo(), it throws error?
-// Let's check how Mapas Culturais test data scripts do it.
-// We will just use the exact pattern from the repo's create-test-data.php
 
 $user = $app->repo('User')->find(1);
 if (!$user) {
