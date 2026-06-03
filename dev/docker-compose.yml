@@ -27,6 +27,7 @@ services:
       - ../plugins/DynamicFieldConfig:/var/www/src/plugins/DynamicFieldConfig
       - ../plugins/RootThemeCustomizer:/var/www/src/plugins/RootThemeCustomizer
       - ../plugins/WpForumSso:/var/www/src/plugins/WpForumSso
+      - ../plugins/OpportunityPreloader:/var/www/src/plugins/OpportunityPreloader
       - ../themes/themeCulturaenlinea:/var/www/src/themes/themeCulturaenlinea
 
     environment:
