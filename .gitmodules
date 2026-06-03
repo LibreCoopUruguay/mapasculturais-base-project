@@ -25,3 +25,6 @@
 [submodule "plugins/DynamicFieldConfig"]
 	path = plugins/DynamicFieldConfig
 	url = https://github.com/kterva/plugin-DynamicFieldConfig.git
+[submodule "plugins/OpportunityPreloader"]
+	path = plugins/OpportunityPreloader
+	url = https://github.com/LibreCoopUruguay/plugin-OpportunityPreloader.git
